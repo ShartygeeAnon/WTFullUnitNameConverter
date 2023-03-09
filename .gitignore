@@ -1,0 +1,4 @@
+.vs
+WTFullUnitNameConverter/obj/*
+WTFullUnitNameConverter/bin/*
+packages/*
