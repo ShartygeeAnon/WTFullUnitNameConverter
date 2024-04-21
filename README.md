@@ -2,6 +2,10 @@
 
 Covnverts ambigious vehicle names at distances greater than 1 km to their "shop" names, which are used when viewing tech trees.
 
+# Showcase
+
+![](./assets/example.jpg)
+
 # Readme.txt
 
 0. Requirements: .NET Framework 4.8 (probably)
