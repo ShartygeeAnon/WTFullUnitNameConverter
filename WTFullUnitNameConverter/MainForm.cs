@@ -91,7 +91,7 @@ namespace WTFullUnitNameConverter
                 Map(m => m.TChinese).Index(19).Name("<TChinese>");
                 Map(m => m.HChinese).Index(20).Name("<HChinese>");
                 Map(m => m.Comments).Index(21).Name("<Comments>");
-                Map(m => m.max_chars).Index(22).Name("<max_chars>");
+                //Map(m => m.max_chars).Index(22).Name("<max_chars>");
             }
         }
 
