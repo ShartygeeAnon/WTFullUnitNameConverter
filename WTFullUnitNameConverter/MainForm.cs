@@ -175,7 +175,7 @@ namespace WTFullUnitNameConverter
                         else
                         {
                             csvReader.Context.RegisterClassMap<InternalStructureMapIFN1>();
-                            max_chars = true;
+                            max_chars = false;
                         }
                         reader.BaseStream.Position = 0;
                         reader.DiscardBufferedData();
