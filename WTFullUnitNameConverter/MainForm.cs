@@ -101,27 +101,27 @@ namespace WTFullUnitNameConverter
             {
                 Map(m => m.Name).Index(0).Name("<ID|readonly|noverify>");
                 Map(m => m.English).Index(1).Name("<English>");
-                Map(m => m.French).Index(2).Name("<French>");
-                Map(m => m.Italian).Index(3).Name("<Italian>");
-                Map(m => m.German).Index(4).Name("<German>");
-                Map(m => m.Spanish).Index(5).Name("<Spanish>");
-                Map(m => m.Russian).Index(6).Name("<Russian>");
-                Map(m => m.Polish).Index(7).Name("<Polish>");
-                Map(m => m.Czech).Index(8).Name("<Czech>");
-                Map(m => m.Turkish).Index(9).Name("<Turkish>");
-                Map(m => m.Chinese).Index(10).Name("<Chinese>");
-                Map(m => m.Japanese).Index(11).Name("<Japanese>");
-                Map(m => m.Portuguese).Index(12).Name("<Portuguese>");
+                //Map(m => m.French).Index(2).Name("<French>");
+                //Map(m => m.Italian).Index(3).Name("<Italian>");
+                //Map(m => m.German).Index(4).Name("<German>");
+                //Map(m => m.Spanish).Index(5).Name("<Spanish>");
+                //Map(m => m.Russian).Index(6).Name("<Russian>");
+                //Map(m => m.Polish).Index(7).Name("<Polish>");
+                //Map(m => m.Czech).Index(8).Name("<Czech>");
+                //Map(m => m.Turkish).Index(9).Name("<Turkish>");
+                //Map(m => m.Chinese).Index(10).Name("<Chinese>");
+                //Map(m => m.Japanese).Index(11).Name("<Japanese>");
+                //Map(m => m.Portuguese).Index(12).Name("<Portuguese>");
                 //Map(m => m.Vietnamese).Index(13).Name("<Vietnamese>");
-                Map(m => m.Ukrainian).Index(13).Name("<Ukrainian>");
-                Map(m => m.Serbian).Index(14).Name("<Serbian>");
-                Map(m => m.Hungarian).Index(15).Name("<Hungarian>");
-                Map(m => m.Korean).Index(16).Name("<Korean>");
-                Map(m => m.Belarusian).Index(17).Name("<Belarusian>");
-                Map(m => m.Romanian).Index(18).Name("<Romanian>");
-                Map(m => m.TChinese).Index(19).Name("<TChinese>");
-                Map(m => m.HChinese).Index(20).Name("<HChinese>");
-                Map(m => m.Comments).Index(21).Name("<Comments>");
+                //Map(m => m.Ukrainian).Index(13).Name("<Ukrainian>");
+                //Map(m => m.Serbian).Index(14).Name("<Serbian>");
+                //Map(m => m.Hungarian).Index(15).Name("<Hungarian>");
+                //Map(m => m.Korean).Index(16).Name("<Korean>");
+                //Map(m => m.Belarusian).Index(17).Name("<Belarusian>");
+                //Map(m => m.Romanian).Index(18).Name("<Romanian>");
+                //Map(m => m.TChinese).Index(19).Name("<TChinese>");
+                //Map(m => m.HChinese).Index(20).Name("<HChinese>");
+                //Map(m => m.Comments).Index(21).Name("<Comments>");
                 //Map(m => m.max_chars).Index(22).Name("<max_chars>");
             }
         }
@@ -165,18 +165,18 @@ namespace WTFullUnitNameConverter
                     var records = new List<InternalStructure>();
                     var recordsListFull = new List<InternalStructure>();
                     var indexListFull = new List<int>();
-                    bool max_chars = true;
+                    bool ifn1 = false;
                     using (var reader = new StreamReader(openFileDialog1.FileName))
                     using (var csvReader = new CsvReader(reader, config))
                     {
                         string headerLine = reader.ReadLine();
-                        if (headerLine.Contains("<max_chars>"))
-                            csvReader.Context.RegisterClassMap<InternalStructureMap>();
-                        else
+                        if (openFileDialog1.FileName.Contains("IFN1"))
                         {
                             csvReader.Context.RegisterClassMap<InternalStructureMapIFN1>();
-                            max_chars = false;
+                            ifn1 = true;
                         }
+                        else
+                            csvReader.Context.RegisterClassMap<InternalStructureMap>();
                         reader.BaseStream.Position = 0;
                         reader.DiscardBufferedData();
                         records = csvReader.GetRecords<InternalStructure>().ToList();
@@ -209,10 +209,10 @@ namespace WTFullUnitNameConverter
                     using (var writer = new StreamWriter(openFileDialog1.FileName))
                     using (var csvWriter = new CsvWriter(writer, config))
                     {
-                        if (max_chars == true)
-                            csvWriter.Context.RegisterClassMap<InternalStructureMap>();
-                        else
+                        if (ifn1 == true)
                             csvWriter.Context.RegisterClassMap<InternalStructureMapIFN1>();
+                        else
+                            csvWriter.Context.RegisterClassMap<InternalStructureMap>();
                         csvWriter.WriteHeader<InternalStructure>();
                         csvWriter.NextRecord();
                         int i = 0;
