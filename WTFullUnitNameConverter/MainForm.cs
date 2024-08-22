@@ -62,6 +62,14 @@ namespace WTFullUnitNameConverter
             public string Comments { get; set; }
             //[Name("<max_chars>")]
             public string max_chars { get; set; }
+            //[Name("SORT-NATION")]
+            public string SORT_NATION { get; set; }
+            //[Name("SORT-VEH")]
+            public string SORT_VEH { get; set; }
+            //[Name("SORT-ORDER")]
+            public string SORT_ORDER { get; set; }
+            //[Name("ORIG.ORD")]
+            public string ORIG_ORD { get; set; }
         }
 
         public class InternalStructureMap : ClassMap<InternalStructure>
@@ -92,6 +100,10 @@ namespace WTFullUnitNameConverter
                 Map(m => m.HChinese).Index(20).Name("<HChinese>");
                 Map(m => m.Comments).Index(21).Name("<Comments>");
                 Map(m => m.max_chars).Index(22).Name("<max_chars>");
+                //Map(m => m.SORT_NATION).Index(23).Name("SORT-NATION");
+                //Map(m => m.SORT_VEH).Index(24).Name("SORT-VEH");
+                //Map(m => m.SORT_ORDER).Index(25).Name("SORT-ORDER");
+                //Map(m => m.ORIG_ORD).Index(26).Name("ORIG.ORD");
             }
         }
 
@@ -123,6 +135,10 @@ namespace WTFullUnitNameConverter
                 //Map(m => m.HChinese).Index(20).Name("<HChinese>");
                 //Map(m => m.Comments).Index(21).Name("<Comments>");
                 //Map(m => m.max_chars).Index(22).Name("<max_chars>");
+                Map(m => m.SORT_NATION).Index(23).Name("SORT-NATION");
+                Map(m => m.SORT_VEH).Index(24).Name("SORT-VEH");
+                Map(m => m.SORT_ORDER).Index(25).Name("SORT-ORDER");
+                Map(m => m.ORIG_ORD).Index(26).Name("ORIG.ORD");
             }
         }
 
