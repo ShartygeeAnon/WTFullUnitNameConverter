@@ -135,10 +135,10 @@ namespace WTFullUnitNameConverter
                 //Map(m => m.HChinese).Index(20).Name("<HChinese>");
                 //Map(m => m.Comments).Index(21).Name("<Comments>");
                 //Map(m => m.max_chars).Index(22).Name("<max_chars>");
-                Map(m => m.SORT_NATION).Index(23).Name("SORT-NATION");
-                Map(m => m.SORT_VEH).Index(24).Name("SORT-VEH");
-                Map(m => m.SORT_ORDER).Index(25).Name("SORT-ORDER");
-                Map(m => m.ORIG_ORD).Index(26).Name("ORIG.ORD");
+                //Map(m => m.SORT_NATION).Index(23).Name("SORT-NATION");
+                //Map(m => m.SORT_VEH).Index(24).Name("SORT-VEH");
+                //Map(m => m.SORT_ORDER).Index(25).Name("SORT-ORDER");
+                //Map(m => m.ORIG_ORD).Index(26).Name("ORIG.ORD");
             }
         }
 

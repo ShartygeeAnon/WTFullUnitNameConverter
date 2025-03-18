@@ -2,6 +2,8 @@
 
 Covnverts ambigious vehicle names at distances greater than 1 km to their "shop" names, which are used when viewing tech trees.
 
+If the project no longer builds after pulling, delete the "packages" folder.
+
 # Showcase
 
 ![](./assets/example.jpg)
