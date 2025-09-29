@@ -1,146 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using CsvHelper;
-using System.IO;
-using System.Globalization;
 using CsvHelper.Configuration;
-using System.Collections.Generic;
 
 namespace WTFullUnitNameConverter
 {
     public partial class MainForm : Form
     {
-        public class InternalStructure
-        {
-            //[Name("<ID|readonly|noverify>")]
-            public string Name { get; set; }
-            //[Name("<English>")]
-            public string English { get; set; }
-            //[Name("<French>")]
-            public string French { get; set; }
-            //[Name("<Italian>")]
-            public string Italian { get; set; }
-            //[Name("<German>")]
-            public string German { get; set; }
-            //[Name("<Spanish>")]
-            public string Spanish { get; set; }
-            //[Name("<Russian>")]
-            public string Russian { get; set; }
-            //[Name("<Polish>")]
-            public string Polish { get; set; }
-            //[Name("<Czech>")]
-            public string Czech { get; set; }
-            //[Name("<Turkish>")]
-            public string Turkish { get; set; }
-            //[Name("<Chinese>")]
-            public string Chinese { get; set; }
-            //[Name("<Japanese>")]
-            public string Japanese { get; set; }
-            //[Name("<Portuguese>")]
-            public string Portuguese { get; set; }
-            //[Name("<Vietnamese>")]
-            //public string Vietnamese { get; set; }
-            //[Name("<Ukrainian>")]
-            public string Ukrainian { get; set; }
-            //[Name("<Serbian>")]
-            public string Serbian { get; set; }
-            //[Name("<Hungarian>")]
-            public string Hungarian { get; set; }
-            //[Name("<Korean>")]
-            public string Korean { get; set; }
-            //[Name("<Belarusian>")]
-            public string Belarusian { get; set; }
-            //[Name("<Romanian>")]
-            public string Romanian { get; set; }
-            //[Name("<TChinese>")]
-            public string TChinese { get; set; }
-            //[Name("<HChinese>")]
-            public string HChinese { get; set; }
-            //[Name("<Comments>")]
-            public string Comments { get; set; }
-            //[Name("<max_chars>")]
-            public string max_chars { get; set; }
-            //[Name("SORT-NATION")]
-            public string SORT_NATION { get; set; }
-            //[Name("SORT-VEH")]
-            public string SORT_VEH { get; set; }
-            //[Name("SORT-ORDER")]
-            public string SORT_ORDER { get; set; }
-            //[Name("ORIG.ORD")]
-            public string ORIG_ORD { get; set; }
-        }
-
-        public class InternalStructureMap : ClassMap<InternalStructure>
-        {
-            public InternalStructureMap()
-            {
-                Map(m => m.Name).Index(0).Name("<ID|readonly|noverify>");
-                Map(m => m.English).Index(1).Name("<English>");
-                Map(m => m.French).Index(2).Name("<French>");
-                Map(m => m.Italian).Index(3).Name("<Italian>");
-                Map(m => m.German).Index(4).Name("<German>");
-                Map(m => m.Spanish).Index(5).Name("<Spanish>");
-                Map(m => m.Russian).Index(6).Name("<Russian>");
-                Map(m => m.Polish).Index(7).Name("<Polish>");
-                Map(m => m.Czech).Index(8).Name("<Czech>");
-                Map(m => m.Turkish).Index(9).Name("<Turkish>");
-                Map(m => m.Chinese).Index(10).Name("<Chinese>");
-                Map(m => m.Japanese).Index(11).Name("<Japanese>");
-                Map(m => m.Portuguese).Index(12).Name("<Portuguese>");
-                //Map(m => m.Vietnamese).Index(13).Name("<Vietnamese>");
-                Map(m => m.Ukrainian).Index(13).Name("<Ukrainian>");
-                Map(m => m.Serbian).Index(14).Name("<Serbian>");
-                Map(m => m.Hungarian).Index(15).Name("<Hungarian>");
-                Map(m => m.Korean).Index(16).Name("<Korean>");
-                Map(m => m.Belarusian).Index(17).Name("<Belarusian>");
-                Map(m => m.Romanian).Index(18).Name("<Romanian>");
-                Map(m => m.TChinese).Index(19).Name("<TChinese>");
-                Map(m => m.HChinese).Index(20).Name("<HChinese>");
-                Map(m => m.Comments).Index(21).Name("<Comments>");
-                Map(m => m.max_chars).Index(22).Name("<max_chars>");
-                //Map(m => m.SORT_NATION).Index(23).Name("SORT-NATION");
-                //Map(m => m.SORT_VEH).Index(24).Name("SORT-VEH");
-                //Map(m => m.SORT_ORDER).Index(25).Name("SORT-ORDER");
-                //Map(m => m.ORIG_ORD).Index(26).Name("ORIG.ORD");
-            }
-        }
-
-        public class InternalStructureMapIFN1 : ClassMap<InternalStructure>
-        {
-            public InternalStructureMapIFN1()
-            {
-                Map(m => m.Name).Index(0).Name("<ID|readonly|noverify>");
-                Map(m => m.English).Index(1).Name("<English>");
-                //Map(m => m.French).Index(2).Name("<French>");
-                //Map(m => m.Italian).Index(3).Name("<Italian>");
-                //Map(m => m.German).Index(4).Name("<German>");
-                //Map(m => m.Spanish).Index(5).Name("<Spanish>");
-                //Map(m => m.Russian).Index(6).Name("<Russian>");
-                //Map(m => m.Polish).Index(7).Name("<Polish>");
-                //Map(m => m.Czech).Index(8).Name("<Czech>");
-                //Map(m => m.Turkish).Index(9).Name("<Turkish>");
-                //Map(m => m.Chinese).Index(10).Name("<Chinese>");
-                //Map(m => m.Japanese).Index(11).Name("<Japanese>");
-                //Map(m => m.Portuguese).Index(12).Name("<Portuguese>");
-                //Map(m => m.Vietnamese).Index(13).Name("<Vietnamese>");
-                //Map(m => m.Ukrainian).Index(13).Name("<Ukrainian>");
-                //Map(m => m.Serbian).Index(14).Name("<Serbian>");
-                //Map(m => m.Hungarian).Index(15).Name("<Hungarian>");
-                //Map(m => m.Korean).Index(16).Name("<Korean>");
-                //Map(m => m.Belarusian).Index(17).Name("<Belarusian>");
-                //Map(m => m.Romanian).Index(18).Name("<Romanian>");
-                //Map(m => m.TChinese).Index(19).Name("<TChinese>");
-                //Map(m => m.HChinese).Index(20).Name("<HChinese>");
-                //Map(m => m.Comments).Index(21).Name("<Comments>");
-                //Map(m => m.max_chars).Index(22).Name("<max_chars>");
-                //Map(m => m.SORT_NATION).Index(23).Name("SORT-NATION");
-                //Map(m => m.SORT_VEH).Index(24).Name("SORT-VEH");
-                //Map(m => m.SORT_ORDER).Index(25).Name("SORT-ORDER");
-                //Map(m => m.ORIG_ORD).Index(26).Name("ORIG.ORD");
-            }
-        }
+        string[] arguments = Environment.GetCommandLineArgs();
 
         public MainForm()
         {
@@ -149,8 +21,6 @@ namespace WTFullUnitNameConverter
             openFileDialog1.Title = "Select the \"units.csv\" file in the \"lang\" folder in your War Thunder directory";
             openFileDialog1.Filter = ".csv files (*.csv)|*.csv";
         }
-
-        string[] arguments = Environment.GetCommandLineArgs();
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -165,184 +35,255 @@ namespace WTFullUnitNameConverter
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.FileName == null || (!openFileDialog1.FileName.Contains("units") && !openFileDialog1.FileName.Contains(".csv")) || !File.Exists(openFileDialog1.FileName))
-            {
-                if (!arguments.Contains("-silent"))
-                    MessageBox.Show("No or incorrect file selected!", "Error!");
-            }
-            else
-            {
-                try
-                {
-                    var config = new CsvConfiguration(CultureInfo.InvariantCulture)
-                    {
-                        Delimiter = ";",
-                    };
-                    var records = new List<InternalStructure>();
-                    var recordsListFull = new List<InternalStructure>();
-                    var indexListFull = new List<int>();
-                    bool ifn1 = false;
-                    using (var reader = new StreamReader(openFileDialog1.FileName))
-                    using (var csvReader = new CsvReader(reader, config))
-                    {
-                        string headerLine = reader.ReadLine();
-                        if (openFileDialog1.FileName.Contains("IFN1"))
-                        {
-                            csvReader.Context.RegisterClassMap<InternalStructureMapIFN1>();
-                            ifn1 = true;
-                        }
-                        else
-                            csvReader.Context.RegisterClassMap<InternalStructureMap>();
-                        reader.BaseStream.Position = 0;
-                        reader.DiscardBufferedData();
-                        records = csvReader.GetRecords<InternalStructure>().ToList();
-                        int j = 0;
-                        for (int i = 0; i < records.Count; i++)
-                        {
-                            j++;
-                            if (records.ElementAt(i).Name.EndsWith("_0") && records.ElementAt(i + 1).Name.EndsWith("_1") && records.ElementAt(i + 2).Name.EndsWith("_2"))
-                            {
-                                try
-                                {
-                                    if (i != 0 && records.ElementAt(i - 1).Name.EndsWith("_shop"))
-                                    {
-                                        recordsListFull.Add(records.ElementAt(i - 1));
-                                        indexListFull.Add(j);
-                                    }
+            var filename = openFileDialog1.FileName;
+            bool silent = arguments.Contains("-silent");
 
-                                    else
-                                    {
-                                        recordsListFull.Add(records.ElementAt(i));
-                                        indexListFull.Add(j + 1);
-                                    }
-                                }
-                                catch
-                                {
-                                }
-                            }
-                        }
-                    }
-                    using (var writer = new StreamWriter(openFileDialog1.FileName))
-                    using (var csvWriter = new CsvWriter(writer, config))
-                    {
-                        if (ifn1 == true)
-                            csvWriter.Context.RegisterClassMap<InternalStructureMapIFN1>();
-                        else
-                            csvWriter.Context.RegisterClassMap<InternalStructureMap>();
-                        csvWriter.WriteHeader<InternalStructure>();
-                        csvWriter.NextRecord();
-                        int i = 0;
-                        try
-                        {
-                            while (i < records.Count)
-                            {
-                                if (csvWriter.Row == indexListFull[i])
-                                {
-                                    if (recordsListFull[i].Name.EndsWith("_shop"))
-                                    {
-                                        InternalStructure recordShop = new InternalStructure();
-                                        recordShop = records[indexListFull[i] - 2];
-                                        csvWriter.WriteRecord(recordShop);
-                                        csvWriter.NextRecord();
-                                        InternalStructure record0 = new InternalStructure();
-                                        record0 = records[indexListFull[i] - 1];
-                                        record0.Name = record0.Name.Remove(record0.Name.Length - 1, 1);
-                                        record0.Name = record0.Name.Insert(record0.Name.Length, "0");
-                                        csvWriter.WriteRecord(record0);
-                                        csvWriter.NextRecord();
-                                        InternalStructure record1 = new InternalStructure();
-                                        record1 = recordsListFull[i];
-                                        record1.Name = record1.Name.Remove(record1.Name.Length - 4, 4);
-                                        record1.Name = record1.Name.Insert(record1.Name.Length, "1");
-                                        csvWriter.WriteRecord(record1);
-                                        csvWriter.NextRecord();
-                                        InternalStructure record2 = new InternalStructure();
-                                        record2 = recordsListFull[i];
-                                        record2.Name = record2.Name.Remove(record2.Name.Length - 1, 1);
-                                        record2.Name = record2.Name.Insert(record2.Name.Length, "2");
-                                        csvWriter.WriteRecord(record2);
-                                        csvWriter.NextRecord();
-                                        csvWriter.Flush();
-                                    }
-                                    else
-                                    {
-                                        csvWriter.WriteRecord(recordsListFull[i]);
-                                        csvWriter.NextRecord();
-                                        InternalStructure record1 = new InternalStructure();
-                                        record1 = recordsListFull[i];
-                                        record1.Name = record1.Name.Remove(record1.Name.Length - 1, 1);
-                                        record1.Name = record1.Name.Insert(record1.Name.Length, "1");
-                                        csvWriter.WriteRecord(record1);
-                                        csvWriter.NextRecord();
-                                        InternalStructure record2 = new InternalStructure();
-                                        record2 = recordsListFull[i];
-                                        record2.Name = record2.Name.Remove(record2.Name.Length - 1, 1);
-                                        record2.Name = record2.Name.Insert(record2.Name.Length, "2");
-                                        csvWriter.WriteRecord(record2);
-                                        csvWriter.NextRecord();
-                                        csvWriter.Flush();
-                                    }
-                                    i++;
-                                }
-                                else
-                                {
-                                    csvWriter.WriteRecord(records[csvWriter.Row - 2]);
-                                    csvWriter.NextRecord();
-                                    csvWriter.Flush();
-                                }
-                            }
-                            csvWriter.WriteRecord(records[records.Count - 2]);
-                            csvWriter.WriteRecord(records[records.Count - 1]);
-                            csvWriter.Flush();
-                        }
-                        catch
-                        {
-                        }
-                    }
-                    if (!arguments.Contains("-silent"))
-                        MessageBox.Show("Conversion complete", "Message");
-                }
-                catch
+            if (string.IsNullOrEmpty(filename) || (!filename.Contains("units") && !filename.EndsWith(".csv", StringComparison.OrdinalIgnoreCase)) || !File.Exists(filename))
+            {
+                if (!silent)
+                    MessageBox.Show("No or incorrect file selected!", "Error!");
+                return;
+            }
+
+            try
+            {
+                int changes = ProcessFile(filename);
+                if (!silent)
                 {
-                    if (!arguments.Contains("-silent"))
-                        MessageBox.Show("File is in use!", "Error!");
+                    if (changes > 0)
+                        MessageBox.Show($"Conversion complete — {changes} text cell changes applied. Backup created as {Path.GetFileName(filename)}.bak", "Message");
+                    else
+                        MessageBox.Show("Processed file, no changes required.", "Message");
                 }
             }
+            catch (IOException)
+            {
+                if (!silent)
+                    MessageBox.Show("File is in use!", "Error!");
+            }
+            catch (Exception ex)
+            {
+                if (!silent)
+                    MessageBox.Show($"Error while processing file:\n{ex.Message}", "Error!");
+            }
+        }
+
+        private int ProcessFile(string path)
+        {
+            // Read CSV dynamically into a list of dictionaries preserving headers & order
+            var config = new CsvConfiguration(CultureInfo.InvariantCulture)
+            {
+                Delimiter = ";",
+                BadDataFound = null,
+                IgnoreBlankLines = false
+            };
+
+            string[] header;
+            var rows = new List<Dictionary<string, string>>();
+
+            using (var reader = new StreamReader(path))
+            using (var csv = new CsvReader(reader, config))
+            {
+                if (!csv.Read())
+                    throw new InvalidOperationException("CSV appears empty.");
+
+                csv.ReadHeader();
+                header = csv.HeaderRecord;
+                while (csv.Read())
+                {
+                    var record = new Dictionary<string, string>(StringComparer.Ordinal);
+                    foreach (var h in header)
+                    {
+                        // Use GetField by header name to preserve empty strings rather than nulls
+                        string val = "";
+                        try { val = csv.GetField(h) ?? ""; } catch { val = ""; }
+                        record[h] = val;
+                    }
+                    rows.Add(record);
+                }
+            }
+
+            if (header == null || header.Length == 0)
+                throw new InvalidOperationException("CSV header could not be read.");
+
+            string idCol = header[0]; // first column is the ID column, per your CSV
+
+            // Build groups: base -> (variant -> index)
+            var groups = new Dictionary<string, Dictionary<string, int>>(StringComparer.Ordinal);
+            for (int i = 0; i < rows.Count; i++)
+            {
+                var name = rows[i].ContainsKey(idCol) ? rows[i][idCol] ?? "" : "";
+                var (baseId, variant) = SplitVariant(name);
+
+                if (!groups.ContainsKey(baseId))
+                    groups[baseId] = new Dictionary<string, int>(StringComparer.Ordinal);
+
+                // If duplicate variants appear, keep the first occurrence (preserve order)
+                if (!groups[baseId].ContainsKey(variant))
+                    groups[baseId][variant] = i;
+            }
+
+            int changes = 0;
+            // All columns except the ID column are considered "textual" and will be copied
+            var copyCols = header.Where(h => !string.Equals(h, idCol, StringComparison.Ordinal)).ToArray();
+
+            // Copy helper
+            void CopyFromTo(int srcIdx, int dstIdx)
+            {
+                var src = rows[srcIdx];
+                var dst = rows[dstIdx];
+                foreach (var col in copyCols)
+                {
+                    var s = src.ContainsKey(col) ? src[col] : "";
+                    var d = dst.ContainsKey(col) ? dst[col] : "";
+                    if (!string.Equals(s, d, StringComparison.Ordinal))
+                    {
+                        dst[col] = s;
+                        changes++;
+                    }
+                }
+            }
+
+            // Apply rules for every group
+            foreach (var kv in groups)
+            {
+                var baseId = kv.Key;
+                var variants = kv.Value;
+                bool has0 = variants.ContainsKey("_0");
+                bool has1 = variants.ContainsKey("_1");
+                bool has2 = variants.ContainsKey("_2");
+                bool hasshop = variants.ContainsKey("_shop");
+                bool hasplain = variants.ContainsKey("");
+
+                // Rule 1:
+                // Case A: _0, _1, _2 present & no _shop & no plain -> copy from _1 -> _2 (leave _0 as is)
+                if (has0 && has1 && has2 && (!hasshop) && (!hasplain))
+                {
+                    CopyFromTo(variants["_1"], variants["_2"]);
+                    continue;
+                }
+
+                // Rule 2:
+                // Case B: plain + _0, _1, _2 present & no _shop -> copy plain -> _1 and _2 (leave _0 as is)
+                if (hasplain && has0 && has1 && has2 && (!hasshop))
+                {
+                    CopyFromTo(variants[""], variants["_1"]);
+                    CopyFromTo(variants[""], variants["_2"]);
+                    continue;
+                }
+
+                // Rule 3: shop present -> shop replaces _1/_2 (if they exist) and plain (if it exists). Leave _0 alone.
+                if (hasshop)
+                {
+                    int shopIdx = variants["_shop"];
+                    if (has1) CopyFromTo(shopIdx, variants["_1"]);
+                    if (has2) CopyFromTo(shopIdx, variants["_2"]);
+                    if (hasplain) CopyFromTo(shopIdx, variants[""]);
+                    continue;
+                }
+
+                // Rule 4: fallback: plain exists and _1/_2 exist but no _0 and no _shop -> copy plain -> _1/_2
+                if (hasplain && (!has0) && (!hasshop) && (has1 || has2))
+                {
+                    if (has1) CopyFromTo(variants[""], variants["_1"]);
+                    if (has2) CopyFromTo(variants[""], variants["_2"]);
+                    continue;
+                }
+
+                // Other combinations: leave untouched (safer)
+            }
+
+            // If any changes were made, make a backup and write the file
+            if (changes > 0)
+            {
+                // Make backup
+                string bak = path + ".bak";
+                File.Copy(path, bak, true);
+
+                // Write CSV back using same header order and ';' delimiter
+                using (var writer = new StreamWriter(path))
+                using (var csvWriter = new CsvWriter(writer, config))
+                {
+                    // Write header
+                    foreach (var h in header)
+                        csvWriter.WriteField(h);
+                    csvWriter.NextRecord();
+
+                    // Write rows in original order
+                    foreach (var row in rows)
+                    {
+                        foreach (var h in header)
+                        {
+                            string val = row.ContainsKey(h) ? row[h] : "";
+                            csvWriter.WriteField(val);
+                        }
+                        csvWriter.NextRecord();
+                    }
+                    csvWriter.Flush();
+                }
+            }
+
+            return changes;
+        }
+
+        /// <summary>
+        /// Split an id into (base, variant). Variant is one of: "_0", "_1", "_2", "_shop", or "" for plain.
+        /// If it doesn't match any pattern, variant will be "" (treated as plain base)
+        /// </summary>
+        private (string baseId, string variant) SplitVariant(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+                return (id ?? "", "");
+
+            if (id.EndsWith("_0", StringComparison.Ordinal))
+                return (id.Substring(0, id.Length - 2), "_0");
+            if (id.EndsWith("_1", StringComparison.Ordinal))
+                return (id.Substring(0, id.Length - 2), "_1");
+            if (id.EndsWith("_2", StringComparison.Ordinal))
+                return (id.Substring(0, id.Length - 2), "_2");
+            if (id.EndsWith("_shop", StringComparison.Ordinal))
+                return (id.Substring(0, id.Length - 5), "_shop");
+            // plain
+            return (id, "");
         }
 
         public void MainForm_Load(object sender, EventArgs e)
         {
+            // CLI behaviour: same semantics as original
             if (arguments.Length > 1)
             {
+                // If only -silent supplied, do nothing and return
                 if (arguments.Length == 2 && arguments.Contains("-silent"))
                 {
                     return;
                 }
+
+                // Otherwise the first non-exe arg is treated as file path
+                openFileDialog1.FileName = arguments[1];
+                textBox1.Text = openFileDialog1.FileName;
+
+                bool silent = arguments.Contains("-silent");
+
+                if (string.IsNullOrEmpty(openFileDialog1.FileName) || (!openFileDialog1.FileName.Contains("units") && !openFileDialog1.FileName.Contains(".csv")) || !File.Exists(openFileDialog1.FileName))
+                {
+                    if (!silent)
+                        MessageBox.Show("No or incorrect file selected!", "Error!");
+                    else
+                        Application.Exit();
+                }
                 else
                 {
-                    openFileDialog1.FileName = arguments[1];
-                    textBox1.Text = openFileDialog1.FileName;
-                    if (openFileDialog1.FileName == null || (!openFileDialog1.FileName.Contains("units") && !openFileDialog1.FileName.Contains(".csv")) || !File.Exists(openFileDialog1.FileName))
+                    try
                     {
-                        if (!arguments.Contains("-silent"))
-                            MessageBox.Show("No or incorrect file selected!", "Error!");
-                        else
-                            Application.Exit();
+                        // Process once and exit (original behaviour)
+                        button2.PerformClick();
+                        Application.Exit();
                     }
-                    else
+                    catch
                     {
-                        try
-                        {
-                            button2.PerformClick();
-                            Application.Exit();
-                        }
-                        catch
-                        {
-                            if (!arguments.Contains("-silent"))
-                                MessageBox.Show("File is in use!", "Error!");
-                            else
-                                Application.Exit();
-                        }
+                        if (!silent)
+                            MessageBox.Show("File is in use!", "Error!");
+                        Application.Exit();
                     }
                 }
             }
